@@ -33,4 +33,23 @@ public class ProductRepository
             .Where(p => p.IsActive)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<Product>> GetAllAsync()
+    {
+        return await _context.Products
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
+    public async Task<Product?> GetByIdAsync(Guid id)
+    {
+        return await _context.Products
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
+
+    public void Remove(Product product)
+    {
+        _context.Products.Remove(product);
+    }
 }

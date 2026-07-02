@@ -18,6 +18,7 @@ public static class InfrastructureServiceCollectionExtensions
                 configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

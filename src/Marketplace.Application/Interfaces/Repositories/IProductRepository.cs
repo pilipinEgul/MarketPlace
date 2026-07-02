@@ -5,8 +5,12 @@ namespace Marketplace.Application.Interfaces.Repositories;
 public interface IProductRepository : IGenericRepository<Product>
 {
     Task<Product?> GetBySkuAsync(string sku);
-
+    Task<IEnumerable<Product>> GetAllAsync();
     Task<Product?> GetProductWithDetailsAsync(Guid id);
 
     Task<IReadOnlyList<Product>> GetActiveProductsAsync();
+
+    Task<Product?> GetByIdAsync(Guid id);
+
+    void Remove(Product product);
 }
